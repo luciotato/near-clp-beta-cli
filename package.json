@@ -1,0 +1,28 @@
+{
+  "name": "near-clp-beta-cli",
+  "version": "1.0.0",
+  "description": "command cli for near-clp/contract smart contract at beta-1.nearswap.testnet}",
+  "main": "beta",
+  "type": "module",
+  "bin": {
+    "beta": "cli.js"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luciotato/near-clp-beta-cli"
+  },
+  "keywords": [
+    "near",
+    "nearswap",
+    "near-clp",
+    "cli",
+    "tool"
+  ],
+  "author": "luciotato@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luciotato/near-clp-beta-cli/issues"
+  },
+  "homepage": "https://github.com/luciotato/near-clp-beta-cli#readme"
+}
