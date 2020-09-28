@@ -14,7 +14,7 @@ check your node version
 v14.x.y
 ```
 
-If your version is <14, you can install nodejs from [nodejs.org], or use [nvm](https://github.com/nvm-sh/nvm) to install node stable
+If your version is <14, you can install nodejs from [nodejs.org](nodejs.org)(windows), or use [nvm](https://github.com/nvm-sh/nvm)(linux) to install node stable
 
 `> nvm install stable`
 
