@@ -6,7 +6,14 @@
 * near-cli
 
 To install prerequisites:
-You can use nvm to install node stable
+
+check your node version
+
+`> node -v`
+
+`v14.x.y`
+
+If your version is <14, you can install nodejs from [nodejs.org], or use [nvm](https://github.com/nvm-sh/nvm) to install node stable
 
 `> nvm install stable`
 
@@ -14,7 +21,7 @@ You can use npm to install near-cli
 
 `> npm install -g near-cli`
 
-### Installing:
+### Installing this cli:
 
 1. Clone this repo
 
@@ -50,7 +57,6 @@ You need to edit `CLIOptions.js` to add your own near account
 `> nearswap list_pools`
 
 ```
-near view beta-1.nearswap.testnet list_pools --contractName beta-1.nearswap.testnet --accountId lucio.testnet
 View call: beta-1.nearswap.testnet.list_pools()
 [ 'gold.nearswap.testnet', 'usd.nearswap.testnet', [length]: 2 ]
 ```
@@ -58,7 +64,6 @@ View call: beta-1.nearswap.testnet.list_pools()
 `> nearswap pool_info { "token": "gold.nearswap.testnet" }`
 
 ```
-near view beta-1.nearswap.testnet pool_info {\"token\":\"gold.nearswap.testnet\"} --contractName beta-1.nearswap.testnet --accountId lucio.testnet
 View call: beta-1.nearswap.testnet.pool_info({"token":"gold.nearswap.testnet"})
 {
   ynear: "12998486894407298000000000",
