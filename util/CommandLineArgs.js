@@ -203,7 +203,8 @@ export class CommandLineArgs {
         return this.positional.shift();
     }
     /**
-     * requires an amount in NEAR or YOCTO as the next positional argument
+     * requires an amount as the next positional argument
+     * returns it converted to N|Y
      * @param name
      */
     consumeAmount(name, units) {
