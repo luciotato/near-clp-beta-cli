@@ -9,9 +9,10 @@ To install prerequisites:
 
 check your node version
 
-`> node -v`
-
-`v14.x.y`
+```
+> node -v
+v14.x.y
+```
 
 If your version is <14, you can install nodejs from [nodejs.org], or use [nvm](https://github.com/nvm-sh/nvm) to install node stable
 
