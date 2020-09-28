@@ -76,7 +76,7 @@ View call: beta-1.nearswap.testnet.pool_info({"token":"gold.nearswap.testnet"})
 
 ### Use Case, Alice becomes a Liquidity Provider
 
-Alice, wants to create a new pool to provide liquidity for the USD24 NEP21-token.
+Alice, wants to create a new pool to provide liquidity for the usd24 NEP21-token.
 
 She lists the pools to check if that pool already exists:
 
@@ -105,12 +105,12 @@ View call: beta-1.nearswap.testnet.list_pools()
 Now she needs to add liquidity to the pool
 
 
-First, she needs to allow the CLP-contract to grab the usd24 token from her account 
+First, she needs to allow the CLP-contract to grab the usd24 tokens from her NEP21-account 
 
 `> nearswap inc_allowance usd24.nearswap.testnet 10` 
 
 
-Then, she can add the liquidity NEAR+usd24 to the new pool, she sends 100N and the CLP uses the allowance
+Then, she can add the liquidity: NEAR+usd24 to the new pool, she sends 100N and the CLP uses the allowance
 
 `> nearswap add_liquidity { token:usd24.nearswap.testnet, max_tokens:10, min_shares:100 } --amount 100N` 
 
@@ -141,6 +141,10 @@ and checks the status of the pool
 
 `> nearswap pool_info { token:usd24.nearswap.testnet }` 
 
+
+First, he needs to allow the CLP-contract to grab the usd24 tokens from his NEP21-account 
+
+`> nearswap inc_allowance usd24.nearswap.testnet 5` 
 
 then he adds liquidity
 
