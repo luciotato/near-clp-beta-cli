@@ -8,7 +8,7 @@ import { CommandLineArgs } from "./util/CommandLineArgs.js"
 import { options } from "./CLIOptions.js"
 
 //name of this script
-export const nickname = 'beta'
+export const nickname = 'nearswap'
 
 //one function for each pub fn in the contract
 //get parameters by consuming from CommandLineParser
@@ -18,7 +18,7 @@ export class ContractAPI {
   #[init]
   
   usage:
-  > beta new `;
+  > nearswap new `;
   
   new(a /*:CommandLineArgs*/) {
     
@@ -46,7 +46,7 @@ export class ContractAPI {
   set_fee_dst_help =`
   
   usage:
-  > beta set_fee_dst { fee_dst: AccountId }`;
+  > nearswap set_fee_dst { fee_dst: AccountId }`;
   
   set_fee_dst(a /*:CommandLineArgs*/) {
     
@@ -77,7 +77,7 @@ export class ContractAPI {
    fee size.
   
   usage:
-  > beta change_owner { new_owner: AccountId }`;
+  > nearswap change_owner { new_owner: AccountId }`;
   
   change_owner(a /*:CommandLineArgs*/) {
     
@@ -110,7 +110,7 @@ export class ContractAPI {
   #[payable]
   
   usage:
-  > beta check_number { a: u128, aj: U128, b: Balance }`;
+  > nearswap check_number { a: u128, aj: U128, b: Balance }`;
   
   check_number(a /*:CommandLineArgs*/) {
     
@@ -146,7 +146,7 @@ export class ContractAPI {
   #[payable]
   
   usage:
-  > beta create_pool { token: AccountId }`;
+  > nearswap create_pool { token: AccountId }`;
   
   create_pool(a /*:CommandLineArgs*/) {
     
@@ -178,7 +178,7 @@ export class ContractAPI {
    Extracts public information of the 'token' pool.
   
   usage:
-  > beta pool_info { token: AccountId }`;
+  > nearswap pool_info { token: AccountId }`;
   
   pool_info(a /*:CommandLineArgs*/) {
     
@@ -208,7 +208,7 @@ export class ContractAPI {
    Returns list of pools identified as their reserve token AccountId.
   
   usage:
-  > beta list_pools `;
+  > nearswap list_pools `;
   
   list_pools(a /*:CommandLineArgs*/) {
     
@@ -239,7 +239,7 @@ export class ContractAPI {
   #[payable]
   
   usage:
-  > beta add_liquidity { token: AccountId, max_tokens: U128, min_shares: U128 }`;
+  > nearswap add_liquidity { token: AccountId, max_tokens: U128, min_shares: U128 }`;
   
   add_liquidity(a /*:CommandLineArgs*/) {
     
@@ -273,7 +273,7 @@ export class ContractAPI {
    exchengable between different pools.
   
   usage:
-  > beta withdraw_liquidity { token: AccountId, shares: U128, min_ynear: U128, min_tokens: U128 }`;
+  > nearswap withdraw_liquidity { token: AccountId, shares: U128, min_ynear: U128, min_tokens: U128 }`;
   
   withdraw_liquidity(a /*:CommandLineArgs*/) {
     
@@ -303,7 +303,7 @@ export class ContractAPI {
    Returns the owner balance of shares of a pool identified by token.
   
   usage:
-  > beta shares_balance_of { token: AccountId, owner: AccountId }`;
+  > nearswap shares_balance_of { token: AccountId, owner: AccountId }`;
   
   shares_balance_of(a /*:CommandLineArgs*/) {
     
@@ -339,7 +339,7 @@ export class ContractAPI {
   #[payable]
   
   usage:
-  > beta swap_near_to_token_exact_in { token: AccountId, min_tokens: U128 }`;
+  > nearswap swap_near_to_token_exact_in { token: AccountId, min_tokens: U128 }`;
   
   swap_near_to_token_exact_in(a /*:CommandLineArgs*/) {
     
@@ -373,7 +373,7 @@ export class ContractAPI {
   #[payable]
   
   usage:
-  > beta swap_near_to_token_exact_in_xfr { token: AccountId, min_tokens: U128, recipient: AccountId }`;
+  > nearswap swap_near_to_token_exact_in_xfr { token: AccountId, min_tokens: U128, recipient: AccountId }`;
   
   swap_near_to_token_exact_in_xfr(a /*:CommandLineArgs*/) {
     
@@ -409,7 +409,7 @@ export class ContractAPI {
   #[payable]
   
   usage:
-  > beta swap_near_to_token_exact_out { token: AccountId, tokens_out: U128 }`;
+  > nearswap swap_near_to_token_exact_out { token: AccountId, tokens_out: U128 }`;
   
   swap_near_to_token_exact_out(a /*:CommandLineArgs*/) {
     
@@ -443,7 +443,7 @@ export class ContractAPI {
   #[payable]
   
   usage:
-  > beta swap_near_to_token_exact_out_xfr { token: AccountId, tokens_out: U128, recipient: AccountId }`;
+  > nearswap swap_near_to_token_exact_out_xfr { token: AccountId, tokens_out: U128, recipient: AccountId }`;
   
   swap_near_to_token_exact_out_xfr(a /*:CommandLineArgs*/) {
     
@@ -480,7 +480,7 @@ export class ContractAPI {
   #[payable]
   
   usage:
-  > beta swap_token_to_near_exact_in { token: AccountId, tokens_paid: U128, min_ynear: U128 }`;
+  > nearswap swap_token_to_near_exact_in { token: AccountId, tokens_paid: U128, min_ynear: U128 }`;
   
   swap_token_to_near_exact_in(a /*:CommandLineArgs*/) {
     
@@ -514,7 +514,7 @@ export class ContractAPI {
   #[payable]
   
   usage:
-  > beta swap_token_to_near_exact_in_xfr { token: AccountId, tokens_paid: U128, min_ynear: U128, recipient: AccountId }`;
+  > nearswap swap_token_to_near_exact_in_xfr { token: AccountId, tokens_paid: U128, min_ynear: U128, recipient: AccountId }`;
   
   swap_token_to_near_exact_in_xfr(a /*:CommandLineArgs*/) {
     
@@ -551,7 +551,7 @@ export class ContractAPI {
    TODO: Transaction will panic if a caller doesn't provide enough allowance.
   
   usage:
-  > beta swap_token_to_near_exact_out { token: AccountId, ynear_out: U128, max_tokens: U128 }`;
+  > nearswap swap_token_to_near_exact_out { token: AccountId, ynear_out: U128, max_tokens: U128 }`;
   
   swap_token_to_near_exact_out(a /*:CommandLineArgs*/) {
     
@@ -582,7 +582,7 @@ export class ContractAPI {
    who will receive the tokens after the swap.
   
   usage:
-  > beta swap_token_to_near_exact_out_xfr { token: AccountId, ynear_out: U128, max_tokens: U128, recipient: AccountId }`;
+  > nearswap swap_token_to_near_exact_out_xfr { token: AccountId, ynear_out: U128, max_tokens: U128, recipient: AccountId }`;
   
   swap_token_to_near_exact_out_xfr(a /*:CommandLineArgs*/) {
     
@@ -617,7 +617,7 @@ export class ContractAPI {
    TODO: Transaction will panic if a caller doesn't provide enough allowance.
   
   usage:
-  > beta swap_tokens_exact_in { from: AccountId, to: AccountId, from_tokens: U128, min_to_tokens: U128 }`;
+  > nearswap swap_tokens_exact_in { from: AccountId, to: AccountId, from_tokens: U128, min_to_tokens: U128 }`;
   
   swap_tokens_exact_in(a /*:CommandLineArgs*/) {
     
@@ -648,7 +648,7 @@ export class ContractAPI {
    who will receive the tokens after the swap.
   
   usage:
-  > beta swap_tokens_exact_in_xfr { from: AccountId, to: AccountId, from_tokens: U128, min_to_tokens: U128, recipient: AccountId }`;
+  > nearswap swap_tokens_exact_in_xfr { from: AccountId, to: AccountId, from_tokens: U128, min_to_tokens: U128, recipient: AccountId }`;
   
   swap_tokens_exact_in_xfr(a /*:CommandLineArgs*/) {
     
@@ -683,7 +683,7 @@ export class ContractAPI {
    TODO: Transaction will panic if a caller doesn't provide enough allowance.
   
   usage:
-  > beta swap_tokens_exact_out { from: AccountId, to: AccountId, to_tokens: U128, max_from_tokens: U128 }`;
+  > nearswap swap_tokens_exact_out { from: AccountId, to: AccountId, to_tokens: U128, max_from_tokens: U128 }`;
   
   swap_tokens_exact_out(a /*:CommandLineArgs*/) {
     
@@ -714,7 +714,7 @@ export class ContractAPI {
    who will receive the tokens after the swap.
   
   usage:
-  > beta swap_tokens_exact_out_xfr { from: AccountId, to: AccountId, to_tokens: U128, max_from_tokens: U128, recipient: AccountId }`;
+  > nearswap swap_tokens_exact_out_xfr { from: AccountId, to: AccountId, to_tokens: U128, max_from_tokens: U128, recipient: AccountId }`;
   
   swap_tokens_exact_out_xfr(a /*:CommandLineArgs*/) {
     
@@ -745,7 +745,7 @@ export class ContractAPI {
    assets
   
   usage:
-  > beta price_near_to_token_in { token: AccountId, ynear_in: U128 }`;
+  > nearswap price_near_to_token_in { token: AccountId, ynear_in: U128 }`;
   
   price_near_to_token_in(a /*:CommandLineArgs*/) {
     
@@ -776,7 +776,7 @@ export class ContractAPI {
    'tokens_out' of 'token'
   
   usage:
-  > beta price_near_to_token_out { token: AccountId, tokens_out: U128 }`;
+  > nearswap price_near_to_token_out { token: AccountId, tokens_out: U128 }`;
   
   price_near_to_token_out(a /*:CommandLineArgs*/) {
     
@@ -806,7 +806,7 @@ export class ContractAPI {
    Calculates amount of NEAR user will recieve when swapping 'tokens_in' for NEAR.
   
   usage:
-  > beta price_token_to_near_in { token: AccountId, tokens_in: U128 }`;
+  > nearswap price_token_to_near_in { token: AccountId, tokens_in: U128 }`;
   
   price_token_to_near_in(a /*:CommandLineArgs*/) {
     
@@ -837,7 +837,7 @@ export class ContractAPI {
    'tokens_out' of 'tokens'
   
   usage:
-  > beta price_token_to_near_out { token: AccountId, ynear_out: U128 }`;
+  > nearswap price_token_to_near_out { token: AccountId, ynear_out: U128 }`;
   
   price_token_to_near_out(a /*:CommandLineArgs*/) {
     
@@ -867,7 +867,7 @@ export class ContractAPI {
    Calculates amount of tokens 'to' user will receive when swapping 'tokens_in' of 'from'
   
   usage:
-  > beta price_token_to_token_in { from: AccountId, to: AccountId, tokens_in: U128 }`;
+  > nearswap price_token_to_token_in { from: AccountId, to: AccountId, tokens_in: U128 }`;
   
   price_token_to_token_in(a /*:CommandLineArgs*/) {
     
@@ -898,7 +898,7 @@ export class ContractAPI {
    'tokens_out' of tokens 'to'
   
   usage:
-  > beta price_token_to_token_out { from: AccountId, to: AccountId, tokens_out: U128 }`;
+  > nearswap price_token_to_token_out { from: AccountId, to: AccountId, tokens_out: U128 }`;
   
   price_token_to_token_out(a /*:CommandLineArgs*/) {
     
@@ -927,7 +927,7 @@ export class ContractAPI {
   add_liquidity_transfer_callback_help =`
   
   usage:
-  > beta add_liquidity_transfer_callback { token: AccountId }`;
+  > nearswap add_liquidity_transfer_callback { token: AccountId }`;
   
   add_liquidity_transfer_callback(a /*:CommandLineArgs*/) {
     

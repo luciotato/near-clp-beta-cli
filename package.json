@@ -2,10 +2,10 @@
   "name": "near-clp-beta-cli",
   "version": "1.0.0",
   "description": "command cli for near-clp/contract smart contract at beta-1.nearswap.testnet}",
-  "main": "beta",
+  "main": "nearswap",
   "type": "module",
   "bin": {
-    "beta": "cli.js"
+    "nearswap": "cli.js"
   },
   "scripts": {},
   "repository": {

@@ -44,3 +44,25 @@ You need to edit `CLIOptions.js` to add your own near account
         helpText: `user accountId, sets signer`
     },
 ```
+
+### Usage example
+
+`> nearswap list_pools`
+
+```
+near view beta-1.nearswap.testnet list_pools --contractName beta-1.nearswap.testnet --accountId lucio.testnet
+View call: beta-1.nearswap.testnet.list_pools()
+[ 'gold.nearswap.testnet', 'usd.nearswap.testnet', [length]: 2 ]
+```
+
+`> nearswap pool_info { "token": "gold.nearswap.testnet" }`
+
+```
+near view beta-1.nearswap.testnet pool_info {\"token\":\"gold.nearswap.testnet\"} --contractName beta-1.nearswap.testnet --accountId lucio.testnet
+View call: beta-1.nearswap.testnet.pool_info({"token":"gold.nearswap.testnet"})
+{
+  ynear: "12998486894407298000000000",
+  reserve: "221800000030020300000000",
+  total_shares: "1000000000022852100000"
+}
+```
