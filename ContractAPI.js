@@ -14,35 +14,6 @@ export const nickname = 'nearswap'
 //get parameters by consuming from CommandLineParser
 export class ContractAPI {
         
-  new_help =`
-  #[init]
-  
-  usage:
-  > nearswap new `;
-  
-  new(a /*:CommandLineArgs*/) {
-    
-    //--these are some examples on how to consume arguments
-    //const toAccount = a.consumeString("to Account")
-    //const argumentJson = a.consumeJSON("JSON params")
-    
-    //--new has no arguments, if you add some, uncomment the following line
-    //const fnJSONparams = a.consumeJSON("{ x:0, y:1, z:3 }")
-    
-    a.noMoreArgs() // no more positional args should remain
-    
-    const nearCliArgs = [
-      "call",
-      options.contractName.value,
-      "new",
-    ]
-    
-    a.addOptionsTo(nearCliArgs); //add any other --options found the command line
-    
-    spawnNearCli(nearCliArgs);
-    
-  }
-  
   set_fee_dst_help =`
   
   usage:
@@ -94,41 +65,6 @@ export class ContractAPI {
       "call",
       options.contractName.value,
       "change_owner",
-      fnJSONparams,
-    ]
-    
-    a.addOptionsTo(nearCliArgs); //add any other --options found the command line
-    
-    spawnNearCli(nearCliArgs);
-    
-  }
-  
-  check_number_help =`
-  **********************
-       POOL MANAGEMENT
-    **********************
-  #[payable]
-  
-  usage:
-  > nearswap check_number { a: u128, aj: U128, b: Balance }`;
-  
-  check_number(a /*:CommandLineArgs*/) {
-    
-    //function is #payable, --amount option is required
-    a.requireOptionWithAmount(options.amount,'N'); //contract fn is payable, --amount expressed in N=NEARS is required
-    //--these are some examples on how to consume arguments
-    //const toAccount = a.consumeString("to Account")
-    //const argumentJson = a.consumeJSON("JSON params")
-    
-    //get fn arguments as JSON
-    const fnJSONparams = a.consumeJSON("{ a: u128, aj: U128, b: Balance }")
-    
-    a.noMoreArgs() // no more positional args should remain
-    
-    const nearCliArgs = [
-      "call",
-      options.contractName.value,
-      "check_number",
       fnJSONparams,
     ]
     
@@ -239,7 +175,11 @@ export class ContractAPI {
   #[payable]
   
   usage:
-  > nearswap add_liquidity { token: AccountId, max_tokens: U128, min_shares: U128 }`;
+  > nearswap add_liquidity { token: AccountId, max_tokens: U128, min_shares: U128 } --amount xN
+  
+  usage:
+  > nearswap add_liquidity { token: "gold.nearswap.testnet", max_tokens: 10, min_shares: 5 } --amount 10N
+  `;
   
   add_liquidity(a /*:CommandLineArgs*/) {
     
@@ -331,8 +271,8 @@ export class ContractAPI {
   
   swap_near_to_token_exact_in_help =`
   **********************
-    CLP market functions
-    **********************
+  CLP market functions
+  **********************
    Swaps NEAR to 'token' and transfers the reserve tokens to the caller.
    Caller attaches near tokens he wants to swap to the transacion under a condition of
    receving at least 'min_tokens' of 'token'.
@@ -676,11 +616,9 @@ export class ContractAPI {
   
   swap_tokens_exact_out_help =`
    Swaps two different tokens.
-   Caller defines the amount of tokens he wants to receive under a of not spending
-   more than 'max_from_tokens'.
-   Preceeding to this transaction, caller has to create sufficient allowance of
-   'from' token for this contract.
-   TODO: Transaction will panic if a caller doesn't provide enough allowance.
+   Caller defines the amount of tokens he wants to receive under a condition
+   of not spending more than 'max_from_tokens'.
+   Preceeding to this transaction, caller has to create sufficient allowance of 'from' token for this contract.
   
   usage:
   > nearswap swap_tokens_exact_out { from: AccountId, to: AccountId, to_tokens: U128, max_from_tokens: U128 }`;
@@ -915,35 +853,6 @@ export class ContractAPI {
       "view",
       options.contractName.value,
       "price_token_to_token_out",
-      fnJSONparams,
-    ]
-    
-    a.addOptionsTo(nearCliArgs); //add any other --options found the command line
-    
-    spawnNearCli(nearCliArgs);
-    
-  }
-  
-  add_liquidity_transfer_callback_help =`
-  
-  usage:
-  > nearswap add_liquidity_transfer_callback { token: AccountId }`;
-  
-  add_liquidity_transfer_callback(a /*:CommandLineArgs*/) {
-    
-    //--these are some examples on how to consume arguments
-    //const toAccount = a.consumeString("to Account")
-    //const argumentJson = a.consumeJSON("JSON params")
-    
-    //get fn arguments as JSON
-    const fnJSONparams = a.consumeJSON("{ token: AccountId }")
-    
-    a.noMoreArgs() // no more positional args should remain
-    
-    const nearCliArgs = [
-      "call",
-      options.contractName.value,
-      "add_liquidity_transfer_callback",
       fnJSONparams,
     ]
     

@@ -40,7 +40,7 @@ You need to edit `CLIOptions.js` to add your own near account
     accountId: {
         shortName: "acc",
         valueType: "string",
-        value: "lucio.testnet",  <---- edit this value
+ -----> value: "lucio.testnet",  <----- edit this value
         helpText: `user accountId, sets signer`
     },
 ```
