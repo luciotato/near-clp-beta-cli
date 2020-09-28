@@ -2,7 +2,7 @@
 
 ### Prerequisites:
 
-* nodejs stable (v14)
+* nodejs >= 12.17
 * near-cli
 
 To install prerequisites:
@@ -11,10 +11,10 @@ check your node version
 
 ```
 > node -v
-v14.x.y
+v12.17.0
 ```
 
-If your version is <14, you can install nodejs from [nodejs.org](nodejs.org) (windows), 
+If your version is < v12.17, you must install nodejs from [nodejs.org](nodejs.org) (windows/linux), 
 or use [nvm](https://github.com/nvm-sh/nvm) (linux) to install node stable
 
 `> nvm install stable`
