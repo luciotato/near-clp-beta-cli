@@ -64,7 +64,7 @@ export class ContractAPI {
     
     a.noMoreArgs() // no more positional args should remain
     
-    let fnJSONparams = {token: token, tokens_out: "1".padEnd(24,"0") }
+    let fnJSONparams = {token: token, tokens_out: "1"+"".padEnd(24,"0") }
 
     const nearCliArgs = [
       "view",
@@ -80,7 +80,7 @@ export class ContractAPI {
     let yoctos = lastNumber(result)
     if (yoctos) {
       console.log("-".repeat(20))
-      console.log('The price of 1 '+token+' is '+a.convertAmount(yoctos+"Y","N","result")+" Nears")
+      console.log('The price of 1 '+token+' is '+a.convertAmount(yoctos+"Y","N","result")+" NEAR")
     }
     
   }

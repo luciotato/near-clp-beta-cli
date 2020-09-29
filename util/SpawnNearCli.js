@@ -15,13 +15,12 @@ export function spawnNearCli(args) {
     }
     //-----------------------------
     for (var i = 0; i < args.length; i++) {
-        //(windows-compat)
         if (typeof args[i] != "string") { //JSON
             args[i] = JSON.stringify(args[i]);
-            args[i] = args[i].replace(/"/g, '\\"'); //add escape before each quote (windows-compat)
+            args[i] = args[i].replace(/"/g, '\\"'); //add escape before each quote
         }
     }
-    console.log(`near ${args.join(" ")}`);
+    if (debug) console.log(`near ${args.join(" ")}`);
     var execResult = child_process.spawnSync("near", args, { shell: true, env: env }); // shell:true => to be able to invoke near-cli on windows
     //console.log(execResult.stdout.toString())
     //console.log(execResult.stderr.toString())
@@ -52,8 +51,7 @@ export function spawnNearCli(args) {
                 for (let num of numbers) {
                     if (num.length >= 20) {
                         let near = num;
-                        if (near.length < 25)
-                            near = near.padStart(25, '0');
+                        if (near.length < 25) near = near.padStart(25, '0');
                         near = near.slice(0, near.length - 24) + "." + near.slice(near.length - 24) + " NEAR";
                         //show reference line
                         console.log(num.padStart(36, ' ') + " => " + near.padStart(38, ' '));
@@ -82,10 +80,10 @@ export function lastNumber(stdo) {
 }
 
 export function thsep(stdonum) {
-    if (stdonum && stdonum.length <= 3) {
+    if (stdonum && stdonum.length > 3) {
         for (let n = stdonum.length - 3; n >= 1; n -= 3) {
-            stdonum = stdonum.slice(0, n) + "_" + stdonum.slice(n + 1)
+            stdonum = stdonum.slice(0, n) + "_" + stdonum.slice(n )
         }
-        return stdonum;
     }
+    return stdonum;
 }
