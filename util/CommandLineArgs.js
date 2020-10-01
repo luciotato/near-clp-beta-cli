@@ -237,6 +237,7 @@ export class CommandLineArgs {
             process.exit(1);
         }
     }
+
     findDeclarationKey(opt) {
         for (const key in this.optDeclarations) {
             if (opt.shortName && this.optDeclarations[key].shortName == opt.shortName)

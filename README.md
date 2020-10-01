@@ -76,7 +76,7 @@ View call: beta-1.nearswap.testnet.pool_info({"token":"gold.nearswap.testnet"})
 
 ### Use Case, Alice becomes a Liquidity Provider
 
-Alice, wants to create a new pool to provide liquidity for the usd24 NEP21-token.
+Alice, wants to create a new pool to provide liquidity for the gold NEP21-token.
 
 She lists the pools to check if that pool already exists:
 
@@ -90,7 +90,7 @@ View call: beta-1.nearswap.testnet.list_pools()
 
 The pool does not exists, she creates the pool:
 
-`> nearswap create_pool { token:usd24.nearswap.testnet }`
+`> nearswap create_pool { token:gold.nearswap.testnet }`
 
 
 She lists the pools to check if the pool was created:
@@ -99,30 +99,30 @@ She lists the pools to check if the pool was created:
 
 ```
 View call: beta-1.nearswap.testnet.list_pools()
-[ 'gold.nearswap.testnet', 'usd.nearswap.testnet', 'usd24.nearswap.testnet', [length]: 3 ]
+[ 'gold.nearswap.testnet', 'usd.nearswap.testnet', 'gold.nearswap.testnet', [length]: 3 ]
 ```
 
 Now she needs to add liquidity to the pool
 
 
-First, she needs to allow the CLP-contract to grab the usd24 tokens from her NEP21-account 
+First, she needs to allow the CLP-contract to grab the gold tokens from her NEP21-account 
 
-`> nearswap inc_allowance usd24.nearswap.testnet 10` 
+`> nearswap inc_allowance gold.nearswap.testnet 10_000` 
 
 
-Then, she can add the liquidity: NEAR+usd24 to the new pool, she sends 100N and the CLP uses the allowance
+Then, she can add the liquidity: NEAR+gold to the new pool, she sends 100N and the CLP uses the allowance
 
-`> nearswap add_liquidity { token:usd24.nearswap.testnet, max_tokens:10, min_shares:100 } --amount 100N` 
+`> nearswap add_liquidity { token:gold.nearswap.testnet, max_tokens:10, min_shares:100 } --amount 100N` 
 
 
 Now she checks the pool to see the results
 
-`> nearswap pool_info { token:usd24.nearswap.testnet }` 
+`> nearswap info gold` 
 
 
 And she can check how many shares she owns in that pool
 
-`> nearswap shares usd24.nearswap.testnet` 
+`> nearswap shares gold.nearswap.testnet` 
 
 
 ### Use Case, Bob wants to add liquidity to an existing pool
@@ -134,26 +134,26 @@ Bob lists the pools
 
 Bob checks the actual price of the tokem
 
-`> nearswap price usd24.nearswap.testnet` 
+`> nearswap price gold.nearswap.testnet` 
 
 
 and checks the status of the pool
 
-`> nearswap pool_info { token:usd24.nearswap.testnet }` 
+`> nearswap pool_info { token:gold.nearswap.testnet }` 
 
 
-First, he needs to allow the CLP-contract to grab the usd24 tokens from his NEP21-account 
+First, he needs to allow the CLP-contract to grab the gold tokens from his NEP21-account 
 
-`> nearswap inc_allowance usd24.nearswap.testnet 5` 
+`> nearswap inc_allowance gold.nearswap.testnet 5` 
 
 then he adds liquidity
 
-`> nearswap add_liquidity { token:usd24.nearswap.testnet, max_tokens:5, min_shares:50 } --amount 50N` 
+`> nearswap add_liquidity { token:gold.nearswap.testnet, max_tokens:5, min_shares:50 } --amount 50N` 
 
 
 and he can check his shares now
 
-`> nearswap shares usd24.nearswap.testnet` 
+`> nearswap shares gold.nearswap.testnet` 
 
 
 
@@ -161,19 +161,19 @@ and he can check his shares now
 
 She can check the actual price of the tokem
 
-`> nearswap price usd24.nearswap.testnet` 
+`> nearswap price gold.nearswap.testnet` 
 
 
 and check how many shares she own
 
-`> nearswap shares usd24.nearswap.testnet` 
+`> nearswap shares gold.nearswap.testnet` 
 
 
 then she can redeem her LP shares
 
-`> nearswap withdraw_liquidity { token:usd24.nearswap.testnet, shares: 0.05, min_ynear:10N, min_tokens:0.9 }` 
+`> nearswap withdraw_liquidity { token:gold.nearswap.testnet, shares: 0.05, min_ynear:10N, min_tokens:0.9 }` 
 
 
 and check the pool after
 
-`> nearswap pool_info { token:usd24.nearswap.testnet }` 
+`> nearswap pool_info { token:gold.nearswap.testnet }` 

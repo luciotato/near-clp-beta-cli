@@ -191,7 +191,8 @@ export class ContractAPI {
   create_pool(a /*:CommandLineArgs*/) {
     
     //function is #payable, --amount option is required
-    a.requireOptionWithAmount(options.amount,'N'); //contract fn is payable, --amount expressed in N=NEARS is required
+    if (!options.amount.value) options.amount.value="0.5" //storage backing
+
     //--these are some examples on how to consume arguments
     //const toAccount = a.consumeString("to Account")
     //const argumentJson = a.consumeJSON("JSON params")

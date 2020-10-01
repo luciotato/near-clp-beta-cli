@@ -47,7 +47,7 @@ export function spawnNearCli(args) {
                 //deduplicate
                 let numbers = [...new Set(largeNumbers)];
                 //show conversion to NEARs
-                console.log("numbers reference:");
+                console.log("amounts denomination:");
                 for (let num of numbers) {
                     if (num.length >= 20) {
                         let near = num;

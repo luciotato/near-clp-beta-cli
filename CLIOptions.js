@@ -11,6 +11,12 @@ export const options = {
         value: "lucio.testnet",
         helpText: `user accountId, sets signer`
     },
+    masterAccount: {
+        shortName: "ma",
+        valueType: "string",
+        value: "",
+        helpText: `master account`
+    },
     help: {
         shortName: "h",
         value: false,

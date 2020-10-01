@@ -6,10 +6,22 @@ import * as color from "./util/color.js";
 import { spawnNearCli } from "./util/SpawnNearCli.js"
 
 const API = new ContractAPI();
-const args = new CommandLineArgs(options);
+const a = new CommandLineArgs(options);
 
 //command is the 1st positional argument
-let command = args.getCommand();
+let command = a.getCommand();
+
+//---------------------
+function nearView(command, fnJSONparams) {
+    const nearCliArgs = [
+        "view",
+        options.contractName.value,
+        command,
+        fnJSONparams,
+    ]
+    a.addOptionsTo(nearCliArgs); //add any other --options found the command line
+    spawnNearCli(nearCliArgs);
+}
 
 //---------------------
 // CLI-ONLY COMMANDS //
@@ -30,38 +42,77 @@ if (options.info.value) {
 //---------------------
 // external NEP21 COMMANDS //
 //---------------------
-if (command=="inc_allowance") {
-
-    const a = args
+if (command == "inc_allowance") {
 
     //auto add 0.1N refunable for nep21 storage requirements
-    if (!options.amount.value) options.amount.value=0.1
+    if (!options.amount.value) options.amount.value = 0.1
     //a.requireOptionWithAmount(options.amount,"N")
 
     let nep21_contract = a.consumeString("token")
-    let nep21_amount = a.consumeAmount("token_amount","Y")
+    let nep21_amount = a.consumeAmount("token_amount", "Y")
 
     a.noMoreArgs() // no more positional args should remain
 
     a.contractName = nep21_contract
-    
-    let fnJSONparams = {escrow_account_id:options.contractName.value, amount: nep21_amount}
+
+    let fnJSONparams = { escrow_account_id: options.contractName.value, amount: nep21_amount }
 
     const nearCliArgs = [
-    "call",
-    nep21_contract,
-    "inc_allowance",
-    fnJSONparams,
+        "call",
+        nep21_contract,
+        "inc_allowance",
+        fnJSONparams,
     ]
-    
+
     a.addOptionsTo(nearCliArgs); //add any other --options found the command line
-    
+
     spawnNearCli(nearCliArgs);
 
     process.exit(0);
 }
 
 
+//---------------------
+//info [token]*
+//---------------------
+if (command == "info") {
+
+    if (a.positional.length == 0) {
+        API.list_pools(a)
+    }
+    else {
+        while (a.positional.length) {
+            let pool = a.consumeString()
+            nearView("pool_info", { token: pool + '.nearswap.testnet' })
+        }
+    }
+    process.exit(0);
+}
+
+if (command == "hm") {
+
+    let str = a.consumeString("amount")
+    console.log(a.convertAmount(str + "Y", "N", "amount"))
+    process.exit(0);
+}
+
+//nep21 balance
+// >nearswap nep21 balance gold
+if (command == "nep21") {
+    let subcommand = a.consumeString("sub-command")
+    if (subcommand == "balance") {
+
+        let tokenOwner = options.contractName.value
+        if (a.optionalString("my")) tokenOwner = options.accountId.value
+        
+        while (a.positional.length) {
+            let token = a.consumeString()+ '.nearswap.testnet'
+            options.contractName.value = token
+            nearView("get_balance", { owner_id: tokenOwner })
+        }
+    }
+    process.exit(0);
+}
 
 //---------------------
 // CONTRACT COMMANDS //
@@ -78,5 +129,5 @@ if (options.help.value || !command) {
     process.exit(0);
 }
 //call the contract API -> near-cli
-API[command](args);
+API[command](a);
 //# sourceMappingURL=tom.js.map
