@@ -1,5 +1,5 @@
 import * as child_process from "child_process";
-let debug = 0;
+let debug = 1;
 export function setDebug(value) { debug = value; }
 export function spawnNearCli(args) {
     //-----------------------------
@@ -52,9 +52,9 @@ export function spawnNearCli(args) {
                     if (num.length >= 20) {
                         let near = num;
                         if (near.length < 25) near = near.padStart(25, '0');
-                        near = near.slice(0, near.length - 24) + "." + near.slice(near.length - 24) + " NEAR";
+                        near = near.slice(0, near.length - 24) + "." + near.slice(near.length - 24);
                         //show reference line
-                        console.log(num.padStart(36, ' ') + " => " + near.padStart(38, ' '));
+                        console.log(num.padStart(36, ' ') + " Yoctos => " + near.padStart(38, ' '));
                     }
                 }
             }

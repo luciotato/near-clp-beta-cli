@@ -12,15 +12,23 @@ const a = new CommandLineArgs(options);
 let command = a.getCommand();
 
 //---------------------
-function nearView(command, fnJSONparams) {
+function near(cv /*:"call"|"view"*/, command/*:string*/, fnJSONparams) {
     const nearCliArgs = [
-        "view",
+        cv,
         options.contractName.value,
         command,
         fnJSONparams,
     ]
     a.addOptionsTo(nearCliArgs); //add any other --options found the command line
     spawnNearCli(nearCliArgs);
+}
+//---------------------
+function nearView(command, fnJSONparams) {
+    return near("view", command, fnJSONparams)
+}
+//---------------------
+function nearCall(command, fnJSONparams) {
+    return near("call", command, fnJSONparams)
 }
 
 //---------------------
@@ -100,6 +108,7 @@ if (command == "hm") {
 // >nearswap nep21 balance gold
 if (command == "nep21") {
     let subcommand = a.consumeString("sub-command")
+    
     if (subcommand == "balance") {
 
         let tokenOwner = options.contractName.value
@@ -111,6 +120,35 @@ if (command == "nep21") {
             nearView("get_balance", { owner_id: tokenOwner })
         }
     }
+
+    else if (subcommand == "mint") {
+        let token = a.consumeString()+ '.nearswap.testnet'
+        options.contractName.value = token
+        nearCall("mint_1e3", { })
+    }
+
+    //nearswap nep21 transfer 50000 gold to lucio.testnet
+    else if (subcommand == "transfer") {
+
+        let tokAmount = a.consumeAmount("token amount","Y")
+        
+        let token = a.consumeString()+ '.nearswap.testnet'
+
+        a.optionalString("to")
+
+        let toAcc = a.consumeString("to")
+        if (toAcc=="contract") toAcc=options.contractName.value
+
+        options.contractName.value = token
+        nearCall("transfer", { new_owner_id:toAcc, amount:tokAmount })
+
+    }
+
+    else {
+        console.log("nep21 UNK subcommand "+color.red+subcommand+color.normal)
+        process.exit(1);    
+    }
+
     process.exit(0);
 }
 
