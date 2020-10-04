@@ -2,7 +2,7 @@
 
 ### Prerequisites:
 
-* nodejs >= 12.17
+* nodejs >= 12.17 (v14 preferred)
 * near-cli
 
 To install prerequisites:
@@ -11,7 +11,7 @@ check your node version
 
 ```
 > node -v
-v12.17.0
+v14.x.y
 ```
 
 If your version is < v12.17, you must install nodejs from [nodejs.org](nodejs.org) (windows/linux), 
