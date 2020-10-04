@@ -141,14 +141,17 @@ and checks the status of the pool
 
 `> nearswap pool_info { token:gold.nearswap.testnet }` 
 
+He doesn't have gold tokens, but since this is a demo, he can mint gold for himself
 
-First, he needs to allow the CLP-contract to grab the gold tokens from his NEP21-account 
+`> nearswap nep21 mint gold`
 
-`> nearswap inc_allowance gold.nearswap.testnet 5` 
+Then, he can allow the CLP-contract to grab his new gold tokens from his NEP21-account 
+
+`> nearswap inc_allowance gold 1000` 
 
 then he adds liquidity
 
-`> nearswap add_liquidity { token:gold.nearswap.testnet, max_tokens:5, min_shares:50 } --amount 50N` 
+`> nearswap add_liquidity { token:gold.nearswap.testnet, max_tokens:1000, min_shares:50 } --amount 50N` 
 
 
 and he can check his shares now
