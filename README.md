@@ -4,6 +4,8 @@
 
 * nodejs >= 12.17 (v14 preferred)
 * near-cli
+* bash
+ **NOTE**: `neraswap` has issues with `zsh` shell, because `zsh` parses `{ .. }` (curly braces) for command parameters. Please use `bash`. 
 
 To install prerequisites:
 
